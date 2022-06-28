@@ -1,3 +1,3 @@
 #!/usr/bin/python3
 for i in "abcdefghijklmnopqrstuvwxyz":
-    print(i, end='')
+    print(f"{i:s}", end='')
