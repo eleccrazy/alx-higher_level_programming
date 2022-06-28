@@ -2,4 +2,4 @@
 for i in "abcdefghijklmnopqrstuvwxyz":
     if (i == 'q' or i == 'e'):
         continue
-    print(i, end='')
+    print(f"{i:s}", end='')
