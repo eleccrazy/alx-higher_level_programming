@@ -13,4 +13,3 @@ if __name__ == "__main__":
         while (i < len(argv)):
             print("{:d}: {:s}".format(i, argv[i]))
             i += 1
-        exit()
