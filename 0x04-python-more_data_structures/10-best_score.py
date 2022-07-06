@@ -2,17 +2,12 @@
 
 
 def best_score(a_dictionary):
-    if a_dictionary is None or not isinstance(a_dictionary, dict):
+    if a_dictionary is None:
         return None
-    keys = list(a_dictionary.keys())
-    index = 0
-    values = list(a_dictionary.values())
-    large = values[0]
-    for num in values:
-        if num > large:
-            large = num
-    for la in values:
-        if la == large:
-            break
-        index += 1
-    return keys[index]
+    large = a_dictionary[list(a_dictionary.keys())[0]]
+    big_key = list(a_dictionary.keys())[0]
+    for key, value in a_dictionary.items():
+        if value > large:
+            large = value
+            big_key = key
+    return big_key
