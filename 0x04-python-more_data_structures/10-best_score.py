@@ -2,7 +2,7 @@
 
 
 def best_score(a_dictionary):
-    if a_dictionary is None:
+    if a_dictionary is None or not isinstance(a_dictionary, dict):
         return None
     keys = list(a_dictionary.keys())
     index = 0
