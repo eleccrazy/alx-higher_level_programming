@@ -9,6 +9,6 @@ def safe_print_integer_err(value):
     except (TypeError, ValueError):
         status = False
         msg = sys.exc_info()
-        print("{}".format(msg[1]), file=sys.stderr)
+        print("Exception: {}".format(msg[1]), file=sys.stderr)
     finally:
         return status
