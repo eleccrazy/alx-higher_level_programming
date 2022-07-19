@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-File: 2-square.py
+File: 3-square.py
 Desc: This module contains a single class defination called Size.
 Author: Gizachew Bayness (Elec Crazy)
 Date Created: Jul 19 2022
