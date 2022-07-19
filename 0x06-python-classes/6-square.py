@@ -14,8 +14,8 @@ class Square():
     definations.
     """
     def __init__(self, size=0, position=(0, 0)):
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
@@ -48,7 +48,9 @@ class Square():
         """
         This method sets the value of the attribute position.
         """
-        if isinstance(vaue, tuple) and len(value) == 2 and (not any(value) < 0):
+        if (isinstance(value, tuple) and len(value) == 2 and
+                all(isinstance(v, int) for v in value) and
+                all(v >= 0 for v in value)):
             self.__position = value
         else:
             raise TypeError("position must be a tuple of 2 positive integers")
