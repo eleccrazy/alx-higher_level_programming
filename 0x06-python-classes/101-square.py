@@ -77,10 +77,10 @@ class Square():
                     print('#', end="")
                 print("")
 
-    def __repr__(self):
+    def __str__(self):
         """
         The print representation of the class Square itself with magic
-        method __repr__.
+        method __str__.
         """
         if self.__size == 0:
             print("")
@@ -93,7 +93,7 @@ class Square():
                     print(" ", end="")
                 for j in range(self.__size):
                     print('#', end="")
-                if i != (self.__size - 1):
+                if i < (self.__size - 1):
                     print("")
 
             return ("")
