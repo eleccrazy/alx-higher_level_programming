@@ -82,6 +82,11 @@ class Square():
         The print representation of the class Square itself with magic
         method __repr_.
         """
+        ret_val = ""
+
+        if self.__size == 0:
+            return ret_val
+
         for s in range(self.__position[1]):
             print("")
         for i in range(self.__size):
@@ -89,7 +94,7 @@ class Square():
                 print(" ", end="")
             for j in range(self.__size):
                 print('#', end="")
-            if i != (self.__size - 1):
+            if i < (self.__size - 1):
                 print("")
 
-        return ("")
+        return ret_val
