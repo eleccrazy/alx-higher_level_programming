@@ -2,7 +2,7 @@
 
 """
 File: 2-square.py
-Desc: Thi module contains a single class defination called Size.
+Desc: This module contains a single class defination called Size.
 Author: Gizachew Bayness (Elec Crazy)
 Date Created: Jul 19 2022
 """
