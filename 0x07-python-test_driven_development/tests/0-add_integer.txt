@@ -1,6 +1,6 @@
 ====================================================================
                                                                    =
-Generating Test Cases for 0-add_integer.py module.                 =
+Generating Test Cases for ``0-add_integer`` module.                =
                                                                    =
 ====================================================================
 
@@ -8,7 +8,7 @@ Generating Test Cases for 0-add_integer.py module.                 =
                                                                    =
 File: 0-add_integer.txt                                            =
 Desc: This file contains most possible edge cases for the function =
-      add_integer in the 0-add_integer module                      =
+      ``add_integer`` in the ``0-add_integer`` module              =
 Author: Gizachew Bayness (Elec Crazy)                              =
 Date Created: Jul 23 2022                                          =
                                                                    =
