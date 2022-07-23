@@ -1,0 +1,59 @@
+Generating Test Cases for 0-add_integer.py module.
+==================================================
+
+>>> add_integer = __import__('0-add_integer').add_integer
+
+
+Let's test the function for both integer and floating point numbers
+for both negative and positive cases. Note that the funtion casts
+floating point numbers to integers before computing.
+
+>>> add_integer(1, 2)
+3
+>>> add_integer(1.7, 3)
+4
+>>> add_integer(0.8, 8.8)
+8
+>>> add_integer(-7, 9)
+2
+>>> add_integer(-2, -8)
+-10
+>>> add_integer(0, -2.89)
+-2
+>>> add_integer(1.78, -0.78)
+1
+
+
+Let's test the function with the second argument as optional, it
+has a default value as 98
+
+>>> add_integer(3)
+101
+>>> add_integer(0)
+98
+
+
+Let's test the function with non-integer or non-floating types. Note that
+the funtion expects either floating point or integer, otherwise it raises
+a TypeError exception.
+
+>>> add_integer(3, "Elec Crazy")
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+>>> add_integer("G", 77)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+>>> add_integer([1, 2])
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+>>> add_integer(None, None)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+>>> add_integer(546, None)
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
