@@ -85,7 +85,7 @@ of the original matrix. Therefore, let's verify that.
 
 
 Let's test the function with empty matrix or empty list of lists and not
-empty list. This operation will return the empty list of lists itself.
+empty list. This operation will return empty list of lists itself.
 
 >>> matrix_divided([[]], 5)
 [[]]
@@ -158,8 +158,8 @@ Traceback (most recent call last):
 ...
 TypeError: Each row of the matrix must have the same size
 
-Let's test the function with an invalid divisor (Not a type of integer
-or floating point).
+Let's test the function with an invalid divisor (Neither a type of integer
+nor a type of floating point).
 
 >>> matrix = [
 ...     [-1, -2, 3],
