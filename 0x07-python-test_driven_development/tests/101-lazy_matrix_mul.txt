@@ -16,8 +16,8 @@ Date Created: Jul 24 2022                                          =
 
 >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
 
-Let's first test the function with all valid requirements for both
-floating and integer over +ve and -ve cases.
+Let's first test the function with all valid arguments for both
+float and integer types over +ve and -ve cases.
 
 >>> m_a = [
 ...	[1, 2],
