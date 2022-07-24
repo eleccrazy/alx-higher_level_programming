@@ -1,5 +1,10 @@
 #!/usr/bin/python3
-"""Unittest for max_integer([..])
+
+"""
+File: 6-max_integer_test.py
+Desc: This module provides Unittest for max_integer([..])
+Author: Gizachew Bayness (Elec Crazy)
+Date Created: Jul 23 2022
 """
 import unittest
 max_integer = __import__('6-max_integer').max_integer
