@@ -1,0 +1,115 @@
+====================================================================
+                                                                   =
+Generating Test Cases for ``4-print_square`` module.               =
+                                                                   =
+====================================================================
+
+====================================================================
+                                                                   =
+File: 4-print_square.txt                                           =
+Desc: This file contains most possible edge cases for the function =
+      ``print_square`` in the ``4-print_square`` module            =
+Author: Gizachew Bayness (Elec Crazy)                              =
+Date Created: Jul 24 2022                                          =
+                                                                   =
+====================================================================
+
+Result: The function prints the square based on the value of the
+``size`` parameter.
+
+>>> print_square = __import__('4-print_square').print_square
+
+Let's test the function with different valid ``size`` arguments.
+
+>>> print_square(3)
+###
+###
+###
+
+>>> print_square(10)
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+
+>>> print_square(1)
+#
+
+>>> print_square(0)
+
+>>> print_square(5)
+#####
+#####
+#####
+#####
+#####
+
+Let's test the function with different non-integer ``size`` arguments.
+The function rasies a TypeError when non-intege arguments are passed
+to it.
+
+>>> print_square(3.2)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+>>> print_square("Elec")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+>>> print_square({"Name": "Gizachew", "interest": "Penetration Testing"})
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+>>> print_square(None)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+>>> print_square(0.879)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+Let's test the function with different ``size`` arguments that are less
+than 0. In this case, the function will rasise a ValueError.
+
+>>> print_square(-1)
+Traceback (most recent call last):
+...
+ValueError: size must be >= 0
+
+>>> print_square(-78)
+Traceback (most recent call last):
+...
+ValueError: size must be >= 0
+
+
+Let's test the function with the ``size`` arugment set to negative and
+less than 0. In this case the function wil raise a TypeError.
+
+>>> print_square(-0.78)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+>>> print_square(-6.9)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+Let's test the function with no argument passed to it. If no argument is
+passed, a default TypeError for missing positional argument is raised.
+
+>>> print_square()
+Traceback (most recent call last):
+...
+TypeError: print_square() missing 1 required positional argument: 'size'
