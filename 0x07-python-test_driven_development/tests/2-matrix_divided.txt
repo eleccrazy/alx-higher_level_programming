@@ -6,7 +6,7 @@ Generating Test Cases for ``2-matrix_divided`` module.             =
 
 ====================================================================
                                                                    =
-File: 0-add_integer.txt                                            =
+File: 2-matrix_divided.txt                                         =
 Desc: This file contains most possible edge cases for the function =
       ``matrix_divided`` in the ``2-matrix_divided`` module        =
 Author: Gizachew Bayness (Elec Crazy)                              =
