@@ -21,28 +21,28 @@ Let's test the function for both integer and floating point numbers
 for both negative and positive cases. Note that the funtion casts
 floating point numbers to integers before computing.
 
->>> add_integer(1, 2)
+>>> print(add_integer(1, 2))
 3
->>> add_integer(1.7, 3)
+>>> print(add_integer(1.7, 3))
 4
->>> add_integer(0.8, 8.8)
+>>> print(add_integer(0.8, 8.8))
 8
->>> add_integer(-7, 9)
+>>> print(add_integer(-7, 9))
 2
->>> add_integer(-2, -8)
+>>> print(add_integer(-2, -8))
 -10
->>> add_integer(0, -2.89)
+>>> print(add_integer(0, -2.89))
 -2
->>> add_integer(1.78, -0.78)
+>>> print(add_integer(1.78, -0.78))
 1
 
 
 Let's test the function with the second argument as optional, it
 has a default value as 98
 
->>> add_integer(3)
+>>> print(add_integer(3))
 101
->>> add_integer(0)
+>>> print(add_integer(0))
 98
 
 
@@ -50,23 +50,37 @@ Let's test the function with non-integer or non-floating types. Note that
 the funtion expects either floating point or integer, otherwise it raises
 a TypeError exception.
 
->>> add_integer(3, "Elec Crazy")
+>>> print(add_integer(3, "Elec Crazy"))
 Traceback (most recent call last):
 ...
 TypeError: b must be an integer
->>> add_integer("G", 77)
+>>> print(add_integer("G", 77))
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
->>> add_integer([1, 2])
+>>> print(add_integer([1, 2]))
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
->>> add_integer(None, None)
+>>> print(add_integer(None, None))
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
->>> add_integer(546, None)
+>>> print(add_integer(546, None))
 Traceback (most recent call last):
 ...
 TypeError: b must be an integer
+
+Let's test the function for float NaN and float overflow.
+The function raises a value error exception for float NaN
+and Overflow exception for flaot inf input.
+
+>>> print(add_integer(-5, float('inf')))
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
+
+>>> print(add_integer(float('nan')))
+Traceback (most recent call last):
+...
+ValueError: cannot convert float NaN to integer
