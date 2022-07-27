@@ -15,7 +15,7 @@ def matrix_divided(matrix, div):
     exc_msg = "matrix must be a matrix (list of lists) of integers/floats"
     if not(type(matrix) == list and matrix != [] and
             all(type(lists) == list for lists in matrix) and
-            all(type(item) in [float, int] for item in[item
+            all(type(item) in [float, int] for item in [item
                 for lists in matrix for item in lists])):
         raise TypeError(exc_msg)
 
