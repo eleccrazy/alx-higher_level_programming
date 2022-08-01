@@ -17,10 +17,10 @@ class MyInt(int):
         """
         The not equal to representation of class MyInt.
         """
-        return self.real != value
+        return self.real == value
 
     def __eq__(self, value):
         """
         The equl to representation of class MyInt.
         """
-        return self.real == value
+        return self.real != value
