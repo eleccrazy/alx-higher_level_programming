@@ -1,0 +1,98 @@
+====================================================================
+                                                                   =
+Generating Test Cases for ``1-my_list`` module.                    =
+                                                                   =
+====================================================================
+
+====================================================================
+                                                                   =
+File: 1-my_list.txt                                                =
+Desc: This file contains most possible edge cases for the ``1-my   =
+      _list`` module including docstrings, checking super class,   =
+      and test the method ``print_sorted``.                        =
+Author: Gizachew Bayness (Elec Crazy)                              =
+Date Created: Jul 23 2022                                          =
+                                                                   =
+====================================================================
+
+Let's check for module docstring.
+
+>>> doc_len = __import__("1-my_list").__doc__
+>>> len(doc_len) > 1
+True
+
+Let's check for class docstring.
+
+>>> class_len = __import__("1-my_list").MyList.__doc__
+>>> len(class_len) > 1
+True
+
+Let's check for method docstring.
+
+>>> method_len = __import__("1-my_list").MyList.print_sorted.__doc__
+>>> len(method_len) > 1
+True
+
+>>> MyList = __import__('1-my_list').MyList
+
+Let's check for the correct inheritance.
+
+>>> issubclass(MyList, list)
+True
+
+Let's append some elements and test the method..
+
+>>> l = MyList()
+>>> l.append(3)
+>>> l.append(1)
+>>> l.append(2)
+>>> l.append(4)
+>>> l.append(8)
+>>> l.append(7)
+>>> print(l)
+[3, 1, 2, 4, 8, 7]
+
+>>> l.print_sorted()
+[1, 2, 3, 4, 7, 8]
+
+Let's test for correctly sorted list and test the method.
+
+>>> h = MyList()
+>>> h.append(1)
+>>> h.append(2)
+>>> h.append(3)
+>>> print(h)
+[1, 2, 3]
+
+>>> h.print_sorted()
+[1, 2, 3]
+
+Let's test for negative elements mixed with positive.
+
+>>> u = MyList()
+>>> u.append(-4)
+>>> u.append(3)
+>>> u.append(4)
+>>> u.append(0)
+>>> u.append(-2)
+>>> u.append(-133)
+>>> print(u)
+[-4, 3, 4, 0, -2, -133]
+
+>>> u.print_sorted()
+[-133, -4, -2, 0, 3, 4]
+
+Let's test for empty list.
+
+>>> a = MyList()
+>>> print(a)
+[]
+>>> a.print_sorted()
+[]
+
+Let's test the method by supplying arguments.
+
+>>> a.print_sorted(87)
+Traceback (most recent call last):
+...
+TypeError: print_sorted() takes 1 positional argument but 2 were given
