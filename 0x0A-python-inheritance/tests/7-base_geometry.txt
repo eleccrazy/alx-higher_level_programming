@@ -1,0 +1,103 @@
+====================================================================
+                                                                   =
+Generating Test Cases for ``7-base_geometry`` module.              =
+                                                                   =
+====================================================================
+
+====================================================================
+                                                                   =
+File: 7-base_geometry.txt                                          =
+Desc: This file contains most possible edge cases for the ``7-base =
+      _geometry`` module including docstrings, and test the        =
+      methods.                                                     =
+Author: Gizachew Bayness (Elec Crazy)                              =
+Date Created: Aug 1 2022                                           =
+                                                                   =
+====================================================================
+
+Let's check for module docstring.
+
+>>> doc_len = __import__("7-base_geometry").__doc__
+>>> len(doc_len) > 1
+True
+
+Let's check for class docstring.
+
+>>> class_len = __import__("7-base_geometry").BaseGeometry.__doc__
+>>> len(class_len) > 1
+True
+
+Let's check for method docstring.
+
+>>> method_len = __import__("7-base_geometry").BaseGeometry.area.__doc__
+>>> len(method_len) > 1
+True
+
+>>> method2_len = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
+>>> len(method2_len) > 1
+True
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+>>> base = BaseGeometry()
+
+Let's test the type of object base
+
+>>> type(base)
+<class '7-base_geometry.BaseGeometry'>
+
+Let's test the ``area`` method.
+
+>>> base.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
+
+Let's test with valid arguments to the ``integer_validator`` method.
+
+>>> base.integer_validator("age", 24)
+
+>>> base.integer_validator("number", 7)
+
+Let's test with non-integer value.
+
+>>> base.integer_validator("age", None)
+Traceback (most recent call last):
+...
+TypeError: age must be an integer
+
+>>> base.integer_validator("age", [1, 2, 3])
+Traceback (most recent call last):
+...
+TypeError: age must be an integer
+
+Let's test with values less than or equal to zero.
+
+>>> base.integer_validator("age", 0)
+Traceback (most recent call last):
+...
+ValueError: age must be greater than 0
+
+>>> base.integer_validator("age", -7)
+Traceback (most recent call last):
+...
+ValueError: age must be greater than 0
+
+Let's test the class by passing arguments while instantantiating.
+
+>>> base2 = BaseGeometry(13)
+Traceback (most recent call last):
+...
+TypeError: BaseGeometry() takes no arguments
+
+Let's tes the method ``integer_validator`` by passing fewer arguments.
+
+>>> base.integer_validator("age")
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+>>> base.integer_validator()
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
