@@ -1,4 +1,4 @@
-#!/usr/bin/pytho3
+#!/usr/bin/python3
 
 """
 File: 3-is_kind_of_class.py
