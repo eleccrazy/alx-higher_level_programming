@@ -21,4 +21,4 @@ def append_after(filename="", search_string="", new_string=""):
             if search_string in l:
                 new_content += new_string
     with open(filename, "w", encoding="utf8") as f:
-        f.write(new_content) 
+        f.write(new_content)
