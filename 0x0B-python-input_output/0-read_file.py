@@ -2,7 +2,7 @@
 
 """
 File: 0-read_file.py
-Desc: This module deals with working with files.
+Desc: This module deals with reading files.
 Author: Gizachew Bayness (Elec Crazy)
 Date Created: Aug 2 2022
 """
