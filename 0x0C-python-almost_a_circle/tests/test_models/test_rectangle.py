@@ -13,9 +13,10 @@ from models.base import Base as B
 import unittest
 
 
-class TestRectangle(unittest.TestCase):
+class TestRectangleInstanceCreation(unittest.TestCase):
     """
-    This class contains all possible test cases.
+    This class contains all possible test cases for Rectangle
+    object instantatios.
     """
 
     def test_two_objects(self):
@@ -139,6 +140,64 @@ class TestRectangle(unittest.TestCase):
     def test_isinstance_rectangle(self):
         """ Tests the type of the Rectangle class """
         self.assertIsInstance(R(1, 2, 3, 4, 5), B)
+
+
+class TestRectangleAttributeValidator(unittest.TestCase):
+    """
+    This class contains all possible test cases for Rectangle
+    attribute validation.
+    """
+    def test_width_type(self):
+        """ Tests the type of width attribute """
+        with self.assertRaises(TypeError):
+            R("hello", 2)
+
+    def test_width_value(self):
+        """ Tests the value of width attribute """
+        with self.assertRaises(ValueError):
+            R(0, 45)
+
+    def test_height_type(self):
+        """ Tests the type of height attribute """
+        with self.assertRaises(TypeError):
+            holder = R(1, [], 4, 5, 6).id
+
+    def test_hight_value(self):
+        """ Tests the value of height attribute """
+        with self.assertRaises(ValueError):
+            holder = R(1, -78, 3, 4, 5).height
+
+    def test_x_type(self):
+        """ Tests the type of x attribute """
+        with self.assertRaises(TypeError):
+            R(1, 2, {}, 4, 5)
+
+    def test_x_value(self):
+        """ Tests the value of x attribute """
+        with self.assertRaises(ValueError):
+            R(1, 2, -2)
+
+    def test_y_type(self):
+        """ Tests the type of y attribute """
+        with self.assertRaises(TypeError):
+            holder = R(1, 2, 3, 78.877).id
+
+    def test_y_value(self):
+        """ Tests the value of y attribute """
+        with self.assertRaises(ValueError):
+            holder = R(1, -78, 3, -11, 5).height
+
+    def test_with_proper1(self):
+        """ Tests with proper values """
+        r = R(1, 2, 0, 0, 3)
+        self.assertEqual(0, r.x)
+        self.assertEqual(3, r.id)
+        self.assertEqual(r.height, 2)
+
+    def test_with_proper2(self):
+        """ Tests with proper values """
+        rr = R(4, 9, 8, 77)
+        self.assertEqual(77, rr.y)
 
 
 if __name__ == "__main___":
