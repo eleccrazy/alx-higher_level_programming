@@ -3,7 +3,7 @@
 """
 File: test_rectangle.py
 Desc: This module contains all the test cases applied
-      to the rectnagle module in the models package.
+      to the rectangle module in the models package.
 Author: Gizachew Bayness (Elec Crazy)
 Date Created: Aug 7 2022
 """
@@ -16,7 +16,7 @@ import unittest
 class TestRectangleInstanceCreation(unittest.TestCase):
     """
     This class contains all possible test cases for Rectangle
-    object instantatios.
+    object instantantiations.
     """
 
     def test_two_objects(self):
@@ -79,7 +79,7 @@ class TestRectangleInstanceCreation(unittest.TestCase):
         r = R(1, 9, 7, 8)
         self.assertEqual(r.y, 8)
 
-    def test_x_setter(self):
+    def test_y_setter(self):
         """ Tests x setter """
         r = R(1, 98)
         r.y = 789
@@ -539,6 +539,31 @@ class TestRectangleUpdators(unittest.TestCase):
         r = R(10, 10, 10, 10, 10)
         r.update(height=5, id=89, a=1, b=54, x=19, y=7)
         self.assertEqual("[Rectangle] (89) 19/7 - 10/5", str(r))
+
+
+class TestRectangleDictRepresentation(unittest.TestCase):
+    """
+    This class contains all possible test case for to dictinary
+    method in the Rectangle class.
+    """
+    def test_dictionary(self):
+        """ Tests for correct result of correct args """
+        r = R(10, 2, 1, 9, 5)
+        correct = {'x': 1, 'y': 9, 'id': 5, 'height': 2, 'width': 10}
+        self.assertDictEqual(correct, r.to_dictionary())
+
+    def test_to_dictionary_no_object_changes(self):
+        """ Tests for no instance changes """
+        r1 = R(10, 2, 1, 9, 5)
+        r2 = R(5, 9, 1, 2, 10)
+        r2.update(**r1.to_dictionary())
+        self.assertNotEqual(r1, r2)
+
+    def test_to_dictionary_arg(self):
+        """ Tests for some argument to the method """
+        r = R(10, 2, 4, 1, 2)
+        with self.assertRaises(TypeError):
+            r.to_dictionary(1)
 
 
 if __name__ == "__main___":

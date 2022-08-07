@@ -62,6 +62,7 @@ class TestSquareInstanceCreation(unittest.TestCase):
         s = S(1, 9, 8, 10)
         s.x = 70
         self.assertEqual(70, s.x)
+
     def test_y_getter(self):
         """ Tests x getter """
         s = S(1, 9, 7, 8)
@@ -124,6 +125,7 @@ class TestSquareInstanceCreation(unittest.TestCase):
         """ Tests the type of the Rectangle class """
         self.assertIsInstance(S(1, 2, 3, 4), B)
 
+
 class TestRectangleAttributeValidator(unittest.TestCase):
     """
     This class contains all possible test cases for Square
@@ -157,7 +159,7 @@ class TestRectangleAttributeValidator(unittest.TestCase):
     def test_x_value(self):
         """ Tests the value of x attribute """
         with self.assertRaisesRegex(ValueError, "x must be >= 0"):
-            S(1,-2)
+            S(1, -2)
 
     def test_y_type(self):
         """ Tests the type of y attribute """
@@ -180,6 +182,7 @@ class TestRectangleAttributeValidator(unittest.TestCase):
         """ Tests with proper values """
         ss = S(4, 9, 8, 77)
         self.assertEqual(8, ss.y)
+
 
 class TestSquareArea(unittest.TestCase):
     """
@@ -218,6 +221,7 @@ class TestSquareArea(unittest.TestCase):
         s = S(8, 2, 3, 5)
         s.size = 5
         self.assertEqual(s.area(), 25)
+
 
 class TestSquareUpdators(unittest.TestCase):
     """
@@ -345,7 +349,7 @@ class TestSquareUpdators(unittest.TestCase):
         """ Tests with invalid values """
         s = S(10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            s.update(89, 1,"invalid", "invalid")
+            s.update(89, 1, "invalid", "invalid")
 
     def test_update_kwargs_one(self):
         """ Tests with one kwarg"""
@@ -445,3 +449,32 @@ class TestSquareUpdators(unittest.TestCase):
         s = S(10, 10, 10, 10)
         s.update(size=5, id=89, a=1, b=54, x=19, y=7)
         self.assertEqual("[Square] (89) 19/7 - 5", str(s))
+
+
+class TestSquareDictRepresentation(unittest.TestCase):
+    """
+    This class contains all possible test case for to dictinary
+    method in the Rectangle class.
+    """
+    def test_to_dictionary_output(self):
+        """ Tests for correct result of correct args """
+        s = S(10, 2, 1, 1)
+        correct = {'id': 1, 'x': 2, 'size': 10, 'y': 1}
+        self.assertDictEqual(correct, s.to_dictionary())
+
+    def test_to_dictionary_no_object_changes(self):
+        """ Tests for no instance changes """
+        s1 = S(10, 2, 1, 2)
+        s2 = S(1, 2, 10)
+        s2.update(**s1.to_dictionary())
+        self.assertNotEqual(s1, s2)
+
+    def test_to_dictionary_arg(self):
+        """ Tests for some argument to the method """
+        s = S(10, 10, 10, 10)
+        with self.assertRaises(TypeError):
+            s.to_dictionary(1)
+
+
+if __name__ == "__main__":
+    unittest.main()
