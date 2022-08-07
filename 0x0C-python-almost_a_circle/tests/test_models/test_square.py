@@ -126,7 +126,7 @@ class TestSquareInstanceCreation(unittest.TestCase):
         self.assertIsInstance(S(1, 2, 3, 4), B)
 
 
-class TestRectangleAttributeValidator(unittest.TestCase):
+class TestSquareAttributeValidator(unittest.TestCase):
     """
     This class contains all possible test cases for Square
     attribute validation.
