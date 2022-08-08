@@ -11,6 +11,8 @@ Date Created: Aug 7 2022
 from models.square import Square as S
 from models.base import Base as B
 import unittest
+import sys
+import io
 
 
 class TestSquareInstanceCreation(unittest.TestCase):
@@ -451,9 +453,89 @@ class TestSquareUpdators(unittest.TestCase):
         self.assertEqual("[Square] (89) 19/7 - 5", str(s))
 
 
+class TestSquareStdout(unittest.TestCase):
+    """
+    This class contains all possible test cases for square stdout
+    """
+    @staticmethod
+    def capture_stdout(sq, method):
+        """
+        Captures and returns text printed to stdout.
+        """
+        capture = io.StringIO()
+        sys.stdout = capture
+        if method == "print":
+            print(sq)
+        else:
+            sq.display()
+        sys.stdout = sys.__stdout__
+        return capture
+
+    def test_str_method_print_size(self):
+        s = S(4)
+        capture = TestSquareStdout.capture_stdout(s, "print")
+        correct = "[Square] ({}) 0/0 - 4\n".format(s.id)
+        self.assertEqual(correct, capture.getvalue())
+
+    def test_str_method_size_x(self):
+        s = S(5, 5)
+        correct = "[Square] ({}) 5/0 - 5".format(s.id)
+        self.assertEqual(correct, s.__str__())
+
+    def test_str_method_size_x_y(self):
+        s = S(7, 4, 22)
+        correct = "[Square] ({}) 4/22 - 7".format(s.id)
+        self.assertEqual(correct, str(s))
+
+    def test_str_method_size_x_y_id(self):
+        s = S(2, 88, 4, 19)
+        self.assertEqual("[Square] (19) 88/4 - 2", str(s))
+
+    def test_str_method_changed_attributes(self):
+        s = S(7, 0, 0, [4])
+        s.size = 15
+        s.x = 8
+        s.y = 10
+        self.assertEqual("[Square] ([4]) 8/10 - 15", str(s))
+
+    def test_str_method_one_arg(self):
+        s = S(1, 2, 3, 4)
+        with self.assertRaises(TypeError):
+            s.__str__(1)
+
+    # The following methods test the display method
+
+    def test_display_size(self):
+        s = S(2, 0, 0, 9)
+        capture = TestSquareStdout.capture_stdout(s, "display")
+        self.assertEqual("##\n##\n", capture.getvalue())
+
+    def test_display_size_x(self):
+        s = S(3, 1, 0, 18)
+        capture = TestSquareStdout.capture_stdout(s, "display")
+        self.assertEqual(" ###\n ###\n ###\n", capture.getvalue())
+
+    def test_display_size_y(self):
+        s = S(4, 0, 1, 9)
+        capture = TestSquareStdout.capture_stdout(s, "display")
+        display = "\n####\n####\n####\n####\n"
+        self.assertEqual(display, capture.getvalue())
+
+    def test_display_size_x_y(self):
+        s = S(2, 3, 2, 1)
+        capture = TestSquareStdout.capture_stdout(s, "display")
+        display = "\n\n   ##\n   ##\n"
+        self.assertEqual(display, capture.getvalue())
+
+    def test_display_one_arg(self):
+        s = S(3, 4, 5, 2)
+        with self.assertRaises(TypeError):
+            s.display(1)
+
+
 class TestSquareDictRepresentation(unittest.TestCase):
     """
-    This class contains all possible test case for to dictinary
+    This class contains all possible test cases for to dictinary
     method in the Rectangle class.
     """
     def test_to_dictionary_output(self):

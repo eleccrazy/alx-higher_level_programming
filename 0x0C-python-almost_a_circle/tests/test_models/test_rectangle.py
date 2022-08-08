@@ -11,6 +11,8 @@ Date Created: Aug 7 2022
 from models.rectangle import Rectangle as R
 from models.base import Base as B
 import unittest
+import io
+import sys
 
 
 class TestRectangleInstanceCreation(unittest.TestCase):
@@ -539,6 +541,87 @@ class TestRectangleUpdators(unittest.TestCase):
         r = R(10, 10, 10, 10, 10)
         r.update(height=5, id=89, a=1, b=54, x=19, y=7)
         self.assertEqual("[Rectangle] (89) 19/7 - 10/5", str(r))
+
+
+class TestRectangleStdout(unittest.TestCase):
+    """
+    This class provides all possible test cases related with
+    stdout.
+    """
+    @staticmethod
+    def capture_stdout(rect, method):
+        """
+        This method captures and returns text printed to stdout.
+        """
+        capture = io.StringIO()
+        sys.stdout = capture
+        if method == "print":
+            print(rect)
+        else:
+            rect.display()
+        sys.stdout = sys.__stdout__
+        return capture
+
+    def test_str_method_print_width_height(self):
+        r = R(4, 6)
+        capture = TestRectangleStdout.capture_stdout(r, "print")
+        correct = "[Rectangle] ({}) 0/0 - 4/6\n".format(r.id)
+        self.assertEqual(correct, capture.getvalue())
+
+    def test_str_method_width_height_x(self):
+        r = R(5, 5, 1)
+        correct = "[Rectangle] ({}) 1/0 - 5/5".format(r.id)
+        self.assertEqual(correct, r.__str__())
+
+    def test_str_method_width_height_x_y(self):
+        r = R(1, 8, 2, 4)
+        correct = "[Rectangle] ({}) 2/4 - 1/8".format(r.id)
+        self.assertEqual(correct, str(r))
+
+    def test_str_method_width_height_x_y_id(self):
+        r = R(13, 21, 2, 4, 7)
+        self.assertEqual("[Rectangle] (7) 2/4 - 13/21", str(r))
+
+    def test_str_method_changed_attributes(self):
+        r = R(7, 7, 0, 0, [4])
+        r.width = 15
+        r.height = 1
+        r.x = 8
+        r.y = 10
+        self.assertEqual("[Rectangle] ([4]) 8/10 - 15/1", str(r))
+
+    def test_str_method_one_arg(self):
+        r = R(1, 2, 3, 4, 5)
+        with self.assertRaises(TypeError):
+            r.__str__(1)
+
+    # The following test methods test the display method.
+    def test_display_width_height(self):
+        r = R(2, 3, 0, 0, 0)
+        capture = TestRectangleStdout.capture_stdout(r, "display")
+        self.assertEqual("##\n##\n##\n", capture.getvalue())
+
+    def test_display_width_height_x(self):
+        r = R(3, 2, 1, 0, 1)
+        capture = TestRectangleStdout.capture_stdout(r, "display")
+        self.assertEqual(" ###\n ###\n", capture.getvalue())
+
+    def test_display_width_height_y(self):
+        r = R(4, 5, 0, 1, 0)
+        capture = TestRectangleStdout.capture_stdout(r, "display")
+        display = "\n####\n####\n####\n####\n####\n"
+        self.assertEqual(display, capture.getvalue())
+
+    def test_display_width_height_x_y(self):
+        r = R(2, 4, 3, 2, 0)
+        capture = TestRectangleStdout.capture_stdout(r, "display")
+        display = "\n\n   ##\n   ##\n   ##\n   ##\n"
+        self.assertEqual(display, capture.getvalue())
+
+    def test_display_one_arg(self):
+        r = R(5, 1, 2, 4, 7)
+        with self.assertRaises(TypeError):
+            r.display(1)
 
 
 class TestRectangleDictRepresentation(unittest.TestCase):
