@@ -9,6 +9,7 @@ Date Created: Aug 6 2022
 from json import dumps as ds
 from json import loads as ls
 import csv
+import turtle
 
 
 class Base:
@@ -126,3 +127,40 @@ class Base:
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        This method opens a window and draws all the Rectangles
+        and Squares
+        """
+        my_drawer = turtle.Turtle()
+        my_drawer.screen.bgcolor("#00FFFF")
+        my_drawer.pensize(3)
+        my_drawer.shape("turtle")
+
+        my_drawer.color("#00008B")
+        for r in list_rectangles:
+            my_drawer.showturtle()
+            my_drawer.up()
+            my_drawer.goto(r.x, r.y)
+            my_drawer.down()
+            for i in range(2):
+                my_drawer.forward(r.width)
+                my_drawer.left(90)
+                my_drawer.forward(r.height)
+                my_drawer.left(90)
+            my_drawer.hideturtle()
+
+        my_drawer.color("#FF5F1F")
+        for s in list_squares:
+            my_drawer.showturtle()
+            my_drawer.up()
+            my_drawer.goto(s.x, s.y)
+            my_drawer.down()
+            for i in range(2):
+                my_drawer.forward(s.width)
+                my_drawer.left(90)
+                my_drawer.forward(s.height)
+                my_drawer.left(90)
+            my_drawer.hideturtle()
