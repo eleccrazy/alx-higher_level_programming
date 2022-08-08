@@ -7,6 +7,7 @@ Author: Gizachew Bayness (Elec Crazy)
 Date Created: Aug 6 2022
 """
 from json import dumps as ds
+from json import loads as ls
 
 
 class Base:
@@ -47,3 +48,43 @@ class Base:
             else:
                 ls = [obj.to_dictionary() for obj in list_objs]
                 f.write(Base.to_json_string(ls))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """
+        This method returns the list of the JSON string representation
+        json_string
+        """
+        if json_string is None:
+            return []
+        else:
+            return ls(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        This method returns an instance with all attributes already set
+        """
+        if dictionary and dictionary != {}:
+            name = cls.__name__
+            if name == "Rectangle":
+                r = cls(1, 2)
+                r.update(**dictionary)
+                return r
+            else:
+                s = cls(1)
+                s.update(**dictionary)
+                return s
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        This method returns a list of instances
+        """
+        filename = str(cls.__name__) + ".json"
+        try:
+            with open(filename, "r") as jsonfile:
+                list_dicts = Base.from_json_string(jsonfile.read())
+                return [cls.create(**d) for d in list_dicts]
+        except IOError:
+            return []
