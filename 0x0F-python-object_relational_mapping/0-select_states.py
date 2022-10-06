@@ -12,7 +12,7 @@ db = MySQLdb.connect(
         )
 
 cur = db.cursor()
-cur.execute("SELECT * FROM states")
+cur.execute("SELECT * FROM states ORDER BY id ASC")
 states_info = cur.fetchall()
 
 for state in states_info:
