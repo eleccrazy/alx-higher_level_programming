@@ -13,8 +13,7 @@ if __name__ == "__main__":
             )
 
     cur = db.cursor()
-    cur.execute("""SELECT * FROM states
-            ORDER BY id ASC""")
+    cur.execute("""SELECT * FROM states ORDER BY id ASC""")
     states_info = cur.fetchall()
 
     for state in states_info:
