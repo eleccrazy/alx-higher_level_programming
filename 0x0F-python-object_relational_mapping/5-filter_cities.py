@@ -32,6 +32,4 @@ if __name__ == "__main__":
 
     filtered_list_state = ([state[1] for state in states_info
                             if state[2] == argv[4]])
-    length = len(filtered_list_state)
-    for i in range(length):
-        print(filtered_list_state[i], end=", " if (i != length - 1) else "\n")
+    print(", ".join(filtered_list_state))
