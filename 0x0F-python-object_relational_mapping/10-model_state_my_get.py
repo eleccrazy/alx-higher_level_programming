@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
 """
-File: 9-model_state_filter_a.py
-Desc: This module contains a python script that lists all
-State objects that contain the letter a from the database hbtn_0e_6_usa
+File: 10-model_state_my_get.py
+Desc: This module contains a python script that prints the State
+object with the name passed as argument from the database hbtn_0e_6_usa
 
 Author: Gizachew Bayness (Elec Crazy).
 Date Created: Oct 7 2022
