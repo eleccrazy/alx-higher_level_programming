@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
     cur = db.cursor()
     cur.execute("""SELECT * FROM states
-            WHERE name='{}'
+            WHERE BINARY name='{}'
             ORDER BY id ASC""".format(argv[4]))
     states_info = cur.fetchall()
 
