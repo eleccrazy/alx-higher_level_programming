@@ -1,5 +1,15 @@
 #!/usr/bin/python3
 
+"""
+File: 2-my_filter_states.py
+Desc: This module takes in an argument and displays all
+values in the states table of hbtn_0e_0_usa where name
+matches the argument.
+
+Author: Gizachew Bayness (Elec Crazy)
+Date Created: Oct 7 2022
+"""
+
 from sys import argv
 import MySQLdb
 
