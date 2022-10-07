@@ -1,5 +1,15 @@
 #!/usr/bin/python3
 
+"""
+File: 3-my_safe_filter_states.py
+Desc: This module contains a python script that takes in arguments
+and displays all values in the states table of hbtn_0e_0_usa where
+name matches the argument.
+
+Author: Gizachew Bayness (Elec Crazy)
+Date Created: Oct 7 2022
+"""
+
 from sys import argv
 import MySQLdb
 
