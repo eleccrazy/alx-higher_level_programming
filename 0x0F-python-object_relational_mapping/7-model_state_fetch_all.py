@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-File: 7-model_state_fetch_all.sql
+File: 7-model_state_fetch_all.py
 Desc: This module contains a python script that lists all
 State objects from the database hbtn_0e_6_usa
 
