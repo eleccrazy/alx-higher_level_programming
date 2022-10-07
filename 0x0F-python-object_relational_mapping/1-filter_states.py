@@ -1,5 +1,14 @@
 #!/usr/bin/python3
 
+"""
+File: 1-filter_states.py
+Desc: This module contains a script that  lists all states
+with a name starting with N (upper N) from the database hbtn_0e_0_usa
+
+Author: Gizachew Bayness (Elec Crazy)
+Date Created: Oct 7, 2022
+"""
+
 from sys import argv
 import MySQLdb
 
