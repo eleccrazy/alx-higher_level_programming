@@ -23,9 +23,9 @@ if __name__ == "__main__":
 
     cur = db.cursor()
     cur.execute("""SELECT * FROM states
+            WHERE BINARY name LIKE 'N%'
             ORDER BY id ASC""")
     states_info = cur.fetchall()
 
     for state in states_info:
-        if state[1][0] == 'N':
-            print(state)
+        print(state)
