@@ -13,6 +13,7 @@ from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
+
 class City(Base):
     """
     This class Inherits from Base and links to the MySQL table cities.
