@@ -20,8 +20,8 @@ def find_peak(list_of_integers):
             peack_number > list_of_integers[max_index + 1]):
         return peack_number
 
-    elif peack_number < list_of_integers[max_index - 1]:
-        return find_peak(list_of_integers[:max_index])
+    elif peack_number <= list_of_integers[max_index + 1]:
+        return find_peak(list_of_integers[max_index + 1:])
 
     else:
-        return find_peak(list_of_integers[max_index + 1:])
+        return find_peak(list_of_integers[:max_index])
