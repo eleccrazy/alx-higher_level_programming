@@ -10,4 +10,4 @@ from requests import post
 if __name__ == "__main__":
     payload = {'email': argv[2]}
     result = post(argv[1], data=payload)
-    result.text
+    print(result.text)
