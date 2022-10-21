@@ -6,7 +6,7 @@ from sys import argv
 from requests import post
 
 if __name__ == "__main__":
-    payload = {"q": "" if not argv[1] else argv[1]}
+    payload = {"q": "" if len(argv) < 2 else argv[1]}
     result = post("http://0.0.0.0:5000/search_user", data=payload)
 
     try:
