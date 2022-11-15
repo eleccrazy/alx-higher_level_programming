@@ -1,8 +1,17 @@
 #!/usr/bin/node
 const request = require('request');
-request('https://swapi-api.hbtn.io/api/people/18', function (error, response, body) {
+const args = process.argv;
+request(args[2], function (error, response, body) {
   if (error === null) {
     const jsonData = JSON.parse(body);
-    console.log(jsonData.films.length);
+    let count = 0;
+    for (const resultIndex in jsonData.results) {
+      const film = jsonData.results[resultIndex];
+      for (const characterIndex in film.characters) {
+        const character = film.characters[characterIndex];
+        if (character.endsWith('/18/')) count += 1;
+      }
+    }
+    console.log(count);
   }
 });
