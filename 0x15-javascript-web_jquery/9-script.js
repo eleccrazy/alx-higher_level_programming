@@ -1,5 +1,3 @@
-$('document').ready(function () {
-  $.get('https://fourtonfish.com/hellosalut/?lang=f', function (result) {
-    $('DIV#hello').text(result.hello);
-  });
+$.get('https://stefanbohacek.com/hellosalut/?lang=fr', function (data, status) {
+  $('DIV#hello').text(data.hello);
 });
